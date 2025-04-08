@@ -1,33 +1,41 @@
 class Location {
     getDistanceTo() {
         return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(
+            const watchId = navigator.geolocation.watchPosition(
                 (position) => {
-                    const data = {
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                        accuracy: position.coords.accuracy
-                    };
+                    const accuracy = position.coords.accuracy;
 
-                    document.getElementById('latitude').textContent = `Широта: ${data.latitude}`;
-                    document.getElementById('longitude').textContent = `Довгота: ${data.longitude}`;
-                    document.getElementById('accuracy').textContent = `Точність: ±${data.accuracy} м`;
+                    // Показываем текущие данные
+                    document.getElementById('latitude').textContent = `Широта: ${position.coords.latitude}`;
+                    document.getElementById('longitude').textContent = `Довгота: ${position.coords.longitude}`;
+                    document.getElementById('accuracy').textContent = `Точність: ±${accuracy} м`;
 
-                    resolve({ latitude: data.latitude, longitude: data.longitude });
+                    // Проверяем, достаточно ли точные координаты
+                    if (accuracy <= 10) {
+                        // Останавливаем наблюдение
+                        navigator.geolocation.clearWatch(watchId);
+
+                        resolve({
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        });
+                    }
                 },
                 (error) => {
                     console.error("Помилка отримання геолокації:", error);
-                    reject(error); 
+                    navigator.geolocation.clearWatch(watchId); // На всякий случай остановим
+                    reject(error);
                 },
                 {
                     enableHighAccuracy: true,
-                    timeout: 5000,  
-                    maximumAge: 0 
+                    timeout: 20000,      // Дадим побольше времени на точное позиционирование
+                    maximumAge: 0
                 }
             );
         });
     }
 }
+
 
 
 class MapRenderer {
