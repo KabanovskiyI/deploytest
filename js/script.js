@@ -93,7 +93,7 @@ class MapRenderer {
 }
 
 const image = document.createElement('img');
-image.src = "../image/Out.png";
+image.src = "image/Out.png";
 image.style.width = '761px';  
 image.style.height = '404px';
 const mapContainer = document.getElementById('map-container');
