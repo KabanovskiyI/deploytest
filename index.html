@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            position: relative;
+        }
+        #map-container {
+            position: relative;
+            width: 726px;
+            height: 726px;
+        }
+        
+        #map-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .location-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .location-info span {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="location-info">
+        <span id="longitude">Довгота: ...</span>
+        <span id="latitude">Широта: ...</span>
+        <span id="accuracy">Точність: ...</span>
+    </div>
+    <div id="map-container"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
