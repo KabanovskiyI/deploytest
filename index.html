@@ -48,7 +48,41 @@
             pointer-events: none;
             z-index: 1000; /* поверх других элементов */
         }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
 
+        .modal-box {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: sans-serif;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .modal-box button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .modal-box button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
