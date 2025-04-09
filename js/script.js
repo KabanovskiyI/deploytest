@@ -45,6 +45,7 @@ class MapRenderer {
         this.imageHeight = imageHeight;
         this.posX = 0;
         this.posY = 0;
+        this.arrow = document.getElementById('arrow');
     }
 
 
@@ -97,6 +98,33 @@ class MapRenderer {
             const { x, y } = this.PositionOnMap(latitude, longitude);
             this.drawMap(x, y);
         }).catch(error => console.error("Помилка оновлення позиції:", error));
+    }
+    
+
+    initCompass(arrowElement, onAngleChange = null) {
+        function handleOrientation(event) {
+            const alpha = event.alpha;
+            if (alpha !== null) {
+                const angle = -alpha;
+                arrowElement.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+    
+                if (typeof onAngleChange === 'function') {
+                    onAngleChange(angle);
+                }
+            }
+        }
+    
+        if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
+            DeviceOrientationEvent.requestPermission()
+                .then(response => {
+                    if (response === 'granted') {
+                        window.addEventListener('deviceorientation', handleOrientation, true);
+                    }
+                })
+                .catch(console.error);
+        } else {
+            window.addEventListener('deviceorientation', handleOrientation, true);
+        }
     }
 }
 

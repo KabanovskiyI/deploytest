@@ -36,6 +36,22 @@
         .location-info span {
             display: block;
         }
+        .arrow-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px; /* подгони под твоё изображение */
+            height: auto;
+            transform: translate(-50%, -50%) rotate(0deg);
+            transform-origin: center center; /* вращение по центру */
+            transition: transform 0.2s ease;
+            pointer-events: none;
+        }
+        .compass-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
     </style>
 </head>
 <body>
@@ -45,7 +61,9 @@
         <span id="accuracy">Точність: ...</span>
     </div>
     <div id="map-container"></div>
-
+    <div class="compass-container">
+        <img src="image/user.png" alt="Стрілка" id="arrow" class="arrow-img">
+    </div>
     <script src="js/script.js"></script>
 </body>
 </html>
