@@ -1,3 +1,4 @@
+// Класс для получения геолокации
 class Location {
     getDistanceTo() {
         return new Promise((resolve, reject) => {
@@ -36,8 +37,7 @@ class Location {
     }
 }
 
-
-
+// Класс для работы с картой
 class MapRenderer {
     constructor(element, imageWidth, imageHeight) {
         this.element = element;
@@ -49,11 +49,10 @@ class MapRenderer {
         this.initCompass(this.arrow);
     }
 
-
     PositionOnMap(latitude, longitude) {
         const mapWidth = 761;
         const mapHeight = 404;
-    
+
         const zero = {
             latitude: 49.57442,
             longitude: 34.58275
@@ -66,13 +65,13 @@ class MapRenderer {
             latitude: 49.57414,
             longitude: 34.58275
         };
-        
+
         const procentLatitude = Math.abs((100 / (zero.latitude - bottomLeft.latitude)) * (bottomLeft.latitude - latitude));
         const procentLongitude = Math.abs((100 / (zero.longitude - topRight.longitude)) * (topRight.longitude - longitude));
-    
+
         const x = parseInt((mapWidth / 100) * procentLatitude);
         const y = parseInt((mapHeight / 100) * procentLongitude);
-        
+
         return { x, y };
     } 
 
@@ -98,11 +97,11 @@ class MapRenderer {
             const { latitude, longitude } = data;
             const { x, y } = this.PositionOnMap(latitude, longitude);
             this.drawMap(x, y);
-            
         }).catch(error => console.error("Помилка оновлення позиції:", error));
     }
 }
 
+// Класс компаса
 class Compass {
     constructor(arrowElementId) {
         this.arrowElement = document.getElementById(arrowElementId);
@@ -119,7 +118,6 @@ class Compass {
 
     requestPermissionAndStart() {
         if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
-            // iOS — показать модалку
             this.showPermissionModal().then(() => {
                 DeviceOrientationEvent.requestPermission()
                     .then(permissionState => {
@@ -159,19 +157,21 @@ class Compass {
         });
     }
 }
+
+// Создайте объект MapRenderer и Compass
 window.addEventListener('DOMContentLoaded', () => {
     const compass = new Compass('arrow');
     compass.requestPermissionAndStart();
+
+    const image = document.createElement('img');
+    image.src = "image/Out.png";
+    image.style.width = '761px';  
+    image.style.height = '404px';
+    const mapContainer = document.getElementById('map-container');
+    mapContainer.appendChild(image);
+
+    const render = new MapRenderer(image, 761, 404);
+    setInterval(() => {
+        render.updateMapPosition();
+    }, 1000);
 });
-const image = document.createElement('img');
-image.src = "image/Out.png";
-image.style.width = '761px';  
-image.style.height = '404px';
-const mapContainer = document.getElementById('map-container');
-mapContainer.appendChild(image);
-const render = new MapRenderer(image, 761, 404);
-setInterval(() => {
-    render.updateMapPosition();
-}, 1000);
-
-
