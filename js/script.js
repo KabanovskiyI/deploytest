@@ -97,6 +97,7 @@ class MapRenderer {
             const { latitude, longitude } = data;
             const { x, y } = this.PositionOnMap(latitude, longitude);
             this.drawMap(x, y);
+            this.initCompass(this.arrow);
         }).catch(error => console.error("Помилка оновлення позиції:", error));
     }
     
