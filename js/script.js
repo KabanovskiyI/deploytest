@@ -46,7 +46,6 @@ class MapRenderer {
         this.posX = 0;
         this.posY = 0;
         this.arrow = document.getElementById('arrow');
-        this.initCompass(this.arrow);
     }
 
     PositionOnMap(latitude, longitude) {
