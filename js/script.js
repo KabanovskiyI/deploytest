@@ -101,7 +101,7 @@ class MapRenderer {
     }
 }
 
-// Класс компаса
+
 
 const image = document.createElement('img');
 image.src = "image/Out.png";
@@ -114,5 +114,5 @@ const render = new MapRenderer(image, 761, 404);
 setInterval(() => {
     render.updateMapPosition();
 }, 1000);
-// Создайте объект MapRenderer и Compass
+
 
