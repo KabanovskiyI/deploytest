@@ -46,6 +46,7 @@ class MapRenderer {
         this.posX = 0;
         this.posY = 0;
         this.arrow = document.getElementById('arrow');
+        this.initCompass(this.arrow);
     }
 
 
@@ -97,7 +98,7 @@ class MapRenderer {
             const { latitude, longitude } = data;
             const { x, y } = this.PositionOnMap(latitude, longitude);
             this.drawMap(x, y);
-            this.initCompass(this.arrow);
+            
         }).catch(error => console.error("Помилка оновлення позиції:", error));
     }
     
