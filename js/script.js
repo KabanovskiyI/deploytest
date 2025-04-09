@@ -111,7 +111,7 @@ class Compass {
     _onOrientation(event) {
         const alpha = event.alpha;
         if (alpha !== null) {
-            const angle = -alpha; // Поворот стрелки в противоположную сторону
+            const angle = -alpha + 180; // Поворот стрелки в противоположную сторону
             this.arrowElement.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
         }
     }
