@@ -94,7 +94,7 @@ class MapRenderer {
 
         location.getDistanceTo().then((data) => {
             const { latitude, longitude } = data;
-            const { x, y } = this.PositionOnMap(latitude, longitude);
+            const { x, y } = this.PositionOnMap(49.58791, 34.54308);
             this.drawMap(x, y);
         }).catch(error => console.error("Помилка оновлення позиції:", error));
     }
@@ -103,13 +103,13 @@ class MapRenderer {
 
 
 const image = document.createElement('img');
-image.src = "image/Out.png";
-image.style.width = '761px';  
-image.style.height = '404px';
+image.src = "image/level1.png";
+image.style.width = '1356px';  
+image.style.height = '985px';
 const mapContainer = document.getElementById('map-container');
 mapContainer.appendChild(image);
 
-const render = new MapRenderer(image, 761, 404);
+const render = new MapRenderer(image, 1356, 985);
 setInterval(() => {
     render.updateMapPosition();
 }, 1000);
