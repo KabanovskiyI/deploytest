@@ -13,30 +13,18 @@
             position: relative;
             background-color: #2A2937;
         }
-        #map-container {
-            position: relative;
-            width: 726px;
-            height: 726px;
+        .centered {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        
-        #map-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .location-info {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 16px;
-            line-height: 1.6;
+        .centered img {
+            width: 100px;
+            height: 100px;
         }
 
-        .location-info span {
-            display: block;
-        }
         .arrow-img {
             position: fixed; /* fixed вместо absolute */
             top: 50%;
@@ -87,8 +75,6 @@
     </style>
 </head>
 <body>
-    <div id="map-container"></div>
-
     <div class="centered">
         <img src="user4.png" alt="Centered Image">
     </div>
