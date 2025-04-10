@@ -5,10 +5,10 @@ class Location {
             const watchId = navigator.geolocation.watchPosition(
                 (position) => {
                     const accuracy = position.coords.accuracy;
-
+                    const { x, y } = this.PositionOnMap(49.58791, 34.54308);
                     // Показываем текущие данные
-                    document.getElementById('latitude').textContent = `Широта: ${position.coords.latitude}`;
-                    document.getElementById('longitude').textContent = `Довгота: ${position.coords.longitude}`;
+                    document.getElementById('latitude').textContent = `x: ${x}`;
+                    document.getElementById('longitude').textContent = `y: ${y}`;
                     document.getElementById('accuracy').textContent = `Точність: ±${accuracy} м`;
 
                     // Проверяем, достаточно ли точные координаты
