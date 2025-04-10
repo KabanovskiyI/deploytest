@@ -5,81 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-            padding: 0;
-            position: relative;
-            background-color: #2A2937;
-        }
-        .centered {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .centered img {
-            width: 100px;
-            height: 100px;
+        .compass {
+        position: relative;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        margin: auto;
         }
 
-        .arrow-img {
-            position: fixed; /* fixed вместо absolute */
-            top: 50%;
-            left: 50%;
-            width: 100px;
-            height: auto;
-            transform: translate(-50%, -50%) rotate(0deg);
-            transform-origin: center center;
-            transition: transform 0.2s ease;
-            pointer-events: none;
-            z-index: 1000; /* поверх других элементов */
-        }
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
+        .compass > .arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-style: solid;
+        border-width: 30px 20px 0 20px;
+        border-color: red transparent transparent transparent;
+        z-index: 1;
         }
 
-        .modal-box {
-            background: white;
-            padding: 20px 30px;
-            border-radius: 10px;
-            text-align: center;
-            font-family: sans-serif;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        .compass > .compass-circle,
+        .compass > .my-point {
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease-out;
+        background: url(https://cdn.onlinewebfonts.com/svg/img_467023.png) center
+            no-repeat;
+        background-size: contain;
         }
 
-        .modal-box button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
+        .compass > .my-point {
+        opacity: 0;
+        width: 20%;
+        height: 20%;
+        background: rgb(8, 223, 69);
+        border-radius: 50%;
+        transition: opacity 0.5s ease-out;
         }
 
-        .modal-box button:hover {
-            background-color: #555;
-        }
     </style>
 </head>
 <body>
-    <p id="alpha">Alpha: </p>
-    <div class="centered">
-        <img src="image/user4.png" alt="Centered Image">
-    </div>
-    
-    <script src="js/compass.js"></script>
+    <div class="compass">
+        <div class="arrow"></div>
+        <div class="compass-circle"></div>
+        <div class="my-point"></div>
+      </div>
+      <button class="start-btn">Почати навігацію</button>
+      <script src="js/copCompass.js"></script>
 </body>
 </html>
