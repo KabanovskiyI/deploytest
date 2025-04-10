@@ -87,31 +87,12 @@
     </style>
 </head>
 <body>
-    <div class="location-info">
-        <span id="longitude">Довгота: ...</span>
-        <span id="latitude">Широта: ...</span>
-        <span id="accuracy">Точність: ...</span>
-        <span id="x">x: </span>
-        <span id="y">y: </span>
-    </div>
     <div id="map-container"></div>
-    <div id="compass-container" style="position: fixed; top: 50%; left: 50%; width: 200px; height: 200px; transform: translate(-50%, -50%);">
-        <img src="image/user4.png" alt="Стрілка" id="arrow" class="arrow-img">
-        <div id="target" style="
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: yellow;
-            border-radius: 50%;
-            transform: translate(-50%, -50%) rotate(0deg) translate(90px);
-            transform-origin: center center;
-            transition: transform 0.3s ease;
-        "></div>
+
+    <div class="centered">
+        <img src="user4.png" alt="Centered Image">
     </div>
     
-    
-    <script src="js/compass.js"></script>
+    <script src="js/newCompass.js"></script>
 </body>
 </html>
