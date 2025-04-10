@@ -4,71 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        background-color: #040302;
-      }
-
-      .compass {
-        position: relative;
-        width: 320px;
-        height: 320px;
-        border-radius: 50%;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        margin: auto;
-      }
-
-      .compass > .arrow {
-        position: absolute;
-        width: 0;
-        height: 0;
-        top: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-style: solid;
-        border-width: 30px 20px 0 20px;
-        border-color: red transparent transparent transparent;
-        z-index: 1;
-      }
-
-      .compass > .compass-circle,
-      .compass > .my-point {
-        position: absolute;
-        width: 90%;
-        height: 90%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s ease-out;
-        background: url(image/compassCyber.png)
-          center no-repeat;
-        background-size: contain;
-      }
-
-      .compass > .my-point {
-        opacity: 0;
-        width: 20%;
-        height: 20%;
-        background: rgb(8, 223, 69);
-        border-radius: 50%;
-        transition: opacity 0.5s ease-out;
-      }
-
-      .start-btn {
-        margin-bottom: auto;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="background-animation"></div>
+    <!-- Кнопки -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#" id="first-floor">Мапа першого поверху</a></li>
+            <li><a href="#" id="second-floor">Мапа другого поверху</a></li>
+        </ul>
+    </nav>
+    <!-- Модальне вікно -->
+    <div id="floorModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg" alt="">
+    </div>
+    
+    <div class="container">
+        <p class="neon-text">
+            Раді направити Вас в аудиторію 221, <br> де і жеве цифровий світ.
+        </p>
+        <p class="neon-text" id="task-output"></p>
+        <p class="neon-text" id="task-path">Знайдіть сходи за напрямком SW </p>
+    </div>
     <div class="compass">
         <div class="arrow"></div>
         <div class="compass-circle"></div>
         <div class="my-point"></div>
       </div>
-      <button class="start-btn">Почати навігацію</button>
-      <script src="js/copCompass.js"></script>
+    <button class="start-btn">Почати навігацію</button>
+    <div class="tasks">
+        <ul>
+            <li>
+                <label class="task opened">
+                <input type="checkbox" checked>
+                <span>Знайдіть сходи та підніміться на 2 поверх</span>
+                </label>
+            </li>
+            <li>
+                <label class="task opened">
+                <input type="checkbox">
+                <span>Перейдіть до правого крила коледжу</span>
+                </label>
+            </li>
+            <li>
+                <label class="task opened">
+                <input type="checkbox">
+                <span>Знайдіть аудиторію 221</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+    <script src="js/Maps.js"></script>
+    <script src="js/task.js"></script>
+    <script src="js/copCompass.js"></script>
 </body>
 </html>
