@@ -97,6 +97,7 @@ class Compass {
         const targetLat = 49.587752051894775;
         const targetLon = 34.54299066738715;
         const alpha = event.alpha;
+        document.getElementById('alpha').textContent = `Alpha: ${alpha}°`;
         const direction = calculateAzimuth(userLat, userLon, targetLat, targetLon);
         drawPointOnCircle(alpha - direction);
     }
