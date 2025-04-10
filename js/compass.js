@@ -55,10 +55,10 @@ class Compass {
         const relativeAngle = (azimuthToTarget - currentAzimuth + 360) % 360;
         this.targetElement.style.transform = `
             translate(-50%, -50%) 
-            rotate(${relativeAngle}deg) 
-            translate(90px) 
-            rotate(-${relativeAngle}deg)
+            rotate(${azimuthToTarget + 180}deg) 
+            translate(90px)
         `;
+    
     }
 
     requestPermissionAndStart() {
