@@ -48,7 +48,7 @@ class Compass {
         if (azimuthToTarget === null) return;
 
         // Обновляем стрелку
-        const arrowRotation = -currentAzimuth + 180;
+        const arrowRotation = -currentAzimuth;
         this.arrowElement.style.transform = `translate(-50%, -50%) rotate(${arrowRotation}deg)`;
 
         // Вычисляем относительный угол до цели
