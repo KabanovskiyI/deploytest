@@ -94,8 +94,8 @@ class MapRenderer {
         location.getDistanceTo().then((data) => {
             const { latitude, longitude } = data;
             const { x, y } = this.PositionOnMap(49.58791, 34.54308);
-            document.getElementById('x').textContent = `x: ${x}`;
-            document.getElementById('y').textContent = `y: ${y}`;
+            document.getElementById('x').textContent = `x:          ${x}`;
+            document.getElementById('y').textContent = `y:          ${y}`;
             this.drawMap(x, y);
         }).catch(error => console.error("Помилка оновлення позиції:", error));
     }
