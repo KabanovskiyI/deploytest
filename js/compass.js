@@ -58,8 +58,13 @@ class Compass {
             return (azimuthDeg + 360) % 360; // нормализация в диапазон [0, 360)
         }
         
-        
+        function clearPreviousPoints() {
+            const points = document.querySelectorAll('.compass-point');
+            points.forEach(point => point.remove());
+        }
+
         function drawPointOnCircle(degree) {
+            clearPreviousPoints();
             const radius = 200; // радиус круга
             const centerX = window.innerWidth / 2; // центр экрана по оси X
             const centerY = window.innerHeight / 2; // центр экрана по оси Y
