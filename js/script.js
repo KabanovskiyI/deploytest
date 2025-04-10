@@ -5,10 +5,9 @@ class Location {
             const watchId = navigator.geolocation.watchPosition(
                 (position) => {
                     const accuracy = position.coords.accuracy;
-                    const { x, y } = this.PositionOnMap(49.58791, 34.54308);
                     // Показываем текущие данные
-                    document.getElementById('latitude').textContent = `x: ${x}`;
-                    document.getElementById('longitude').textContent = `y: ${y}`;
+                    document.getElementById('latitude').textContent = `Довгота: ${position.coords.latitude}`;
+                    document.getElementById('longitude').textContent = `Широта: ${position.coords.longitude}`;
                     document.getElementById('accuracy').textContent = `Точність: ±${accuracy} м`;
 
                     // Проверяем, достаточно ли точные координаты
@@ -95,6 +94,8 @@ class MapRenderer {
         location.getDistanceTo().then((data) => {
             const { latitude, longitude } = data;
             const { x, y } = this.PositionOnMap(49.58791, 34.54308);
+            document.getElementById('x').textContent = `x: ${x}`;
+            document.getElementById('y').textContent = `y: ${y}`;
             this.drawMap(x, y);
         }).catch(error => console.error("Помилка оновлення позиції:", error));
     }
