@@ -85,7 +85,7 @@ class Compass {
             point.style.borderRadius = '50%';  // Сделать точку круглой
             point.style.left = `${x - 5}px`;  // Центрируем точку по оси X
             point.style.top = `${y - 5}px`;   // Центрируем точку по оси Y
-        
+            point.classList.add('compass-point');
             // Добавляем точку на страницу
             document.body.appendChild(point);
         }
