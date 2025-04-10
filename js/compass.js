@@ -1,3 +1,5 @@
+
+
 class Compass {
     constructor(arrowElementId, targetElementId, targetLat, targetLon) {
         this.arrowElement = document.getElementById(arrowElementId);
@@ -96,7 +98,7 @@ class Compass {
         const targetLon = 34.54299066738715;
         const alpha = event.alpha;
         const direction = calculateAzimuth(userLat, userLon, targetLat, targetLon);
-        drawPointOnCircle(direction - alpha);
+        drawPointOnCircle(alpha - direction);
     }
 
     requestPermissionAndStart() {
